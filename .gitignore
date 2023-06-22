@@ -1,0 +1,7 @@
+node_modules
+models
+migrations
+seeders
+config
+.husky
+__tests__
