@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function HomePage() {
   const [data, setData] = useState([]);
@@ -20,22 +21,15 @@ function HomePage() {
       console.error('Error:', error);
     }
   };
-  const handleonclick = (train) => {
-    window.alert("you clicked the train "+train.trainName);
-  }
 
   return (
     <div>
       <ul>
         <li className='flex justify-center text-3xl'>Here is the list of trains for you: </li>
         {data.map((item) => (
-          <li key={item.trainNumber} onClick={()=>handleonclick(item)}>
+          <li key={item.trainNumber}>
             <div className='flex justify-center align-middle border-gray-300 p-2 border'>
-              <p>{item.trainName}</p>
-              <p>{item.trainNumber}</p>
-              {/* <p>{item.departureTime}</p>
-              <p>{item.seatsAvailable}</p> */}
-              <p>{item.delayedBy}</p>
+            <Link to={`/train/${item.trainNumber}`}>{item.trainName}</Link>
             </div>
           </li>
         ))}
